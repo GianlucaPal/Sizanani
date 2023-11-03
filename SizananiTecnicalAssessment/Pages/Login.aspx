@@ -28,7 +28,7 @@
                                 <div style="display: flex; flex-direction: column;">
                                     <asp:label id="lblLoginError" runat="server" class="text-danger" Visible="false"></asp:label>
                                     <asp:Button  ID="btnLogin" runat="server" Text="Log in" CssClass="button" Width="100%" Height="36px" Font-Size="1.5em" OnClick="btnLogin_Click"/>
-                                    <asp:HyperLink ID="RegisterHyperLink" runat="server" NavigateUrl="~/Pages/Register.aspx" ToolTip="Start Password Recovery Process">Don't have an account? Register account</asp:HyperLink>
+                                    <asp:HyperLink ID="RegisterHyperLink" runat="server" NavigateUrl="~/Pages/RegisterContractor.aspx" ToolTip="Start Password Recovery Process">Don't have an account? Register account</asp:HyperLink>
                                 </div>
                             </div>
                             <div id="spacer6" runat="server" style="height: 36px;"></div>

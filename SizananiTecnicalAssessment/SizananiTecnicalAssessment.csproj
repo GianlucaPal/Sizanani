@@ -109,7 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Vehicles.aspx" />
-    <Content Include="Pages\Contact.aspx" />
+    <Content Include="Pages\Summary.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -178,12 +178,12 @@
       <DependentUpon>Vehicles.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Pages\Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Pages\Summary.aspx.cs">
+      <DependentUpon>Summary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Pages\Summary.aspx.designer.cs">
+      <DependentUpon>Summary.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegisterContractor.aspx.cs">
       <DependentUpon>RegisterContractor.aspx</DependentUpon>

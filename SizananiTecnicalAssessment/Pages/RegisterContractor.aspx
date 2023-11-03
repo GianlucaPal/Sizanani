@@ -11,8 +11,8 @@
                             <div>
                                 <asp:Label runat="server" AssociatedControlID="txtEmail">Email</asp:Label>
                                 <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" Width="100%" />
-                                <asp:RequiredFieldValidator ID="reqvalUserNameRequired" runat="server" ControlToValidate="txtEmail" Display="None"
-                                    ErrorMessage="User Name is required." ValidationGroup="LoginWizard" SetFocusOnError="true">*</asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="reqvalEmailRequired" runat="server" ControlToValidate="txtEmail" Display="None"
+                                    ErrorMessage="Email is required." SetFocusOnError="true">*</asp:RequiredFieldValidator>
                             </div>
                             <div style="height: 14px;"></div>
                             <div>

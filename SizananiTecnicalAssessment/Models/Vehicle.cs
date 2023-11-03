@@ -49,10 +49,10 @@ namespace SizananiTecnicalAssessment.Models
                 {
                     using (SqlConnection cn = new SqlConnection(WebConfigurationManager.ConnectionStrings["ConnString"].ConnectionString))
                     {
-                        using (SqlCommand cm = new SqlCommand("spUser_List", cn))
+                        using (SqlCommand cm = new SqlCommand("spVehicles_ListByUser", cn))
                         {
                             cm.CommandType = CommandType.StoredProcedure;
-                            cm.Parameters.AddWithValue("@UserID", VehicleID);
+                            cm.Parameters.AddWithValue("@VehicleID", VehicleID);
                             cn.Open();
                             using (SqlDataReader rd = cm.ExecuteReader())
                             {
@@ -60,6 +60,7 @@ namespace SizananiTecnicalAssessment.Models
                                 {
                                     //Area - Your Details
                                     RegistrationNumber = rd["RegistrationNumber"].ToString();
+                                    UserID = rd["UserID"].ToString();
                                     Weight = decimal.Parse(rd["Weight"].ToString());
                                     TypeID = int.Parse(rd["TypeID"].ToString());
                                     Type = rd["Type"].ToString();
@@ -108,7 +109,8 @@ namespace SizananiTecnicalAssessment.Models
                             //Successful Insert 
                             if (cm.Parameters["@VehicleID"].Value != null)
                             {
-                                VehicleID = int.Parse(cm.Parameters["@VehicleID"].Value.ToString());
+                                //VehicleID = int.Parse(cm.Parameters["@VehicleID"].Value.ToString());
+                                VehicleID = Convert.ToInt32(cm.Parameters["@VehicleID"].Value);
                                 _returnValue = true;
                             }
                             else
@@ -154,10 +156,10 @@ namespace SizananiTecnicalAssessment.Models
         #endregion Save
 
         #region Delete
-        public bool Delete()
+        public static bool Delete(int vehicleID)
         {
             bool _returnValue = false;
-            if (VehicleID > 0)//Will Delete an Existing Vehicle Based on VehicleID given
+            if (vehicleID > 0)//Will Delete an Existing Vehicle Based on VehicleID given
             {
                 try
                 {
@@ -166,7 +168,7 @@ namespace SizananiTecnicalAssessment.Models
                         using (SqlCommand cm = new SqlCommand("spVehicles_Delete", cn))
                         {
                             cm.CommandType = CommandType.StoredProcedure;
-                            cm.Parameters.AddWithValue("@VehicleID", VehicleID);
+                            cm.Parameters.AddWithValue("@VehicleID", vehicleID);
                             cn.Open();
                             cm.ExecuteNonQuery();
                             _returnValue = true;

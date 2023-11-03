@@ -24,7 +24,7 @@ namespace SizananiTecnicalAssessment
                 }
                 else
                 {
-                    hfUserID.Value = Helpers.Decrypt(Session["UserID"].ToString());
+                    hfUserID.Value = Helpers.Decrypt(Session["UserID"].ToString()); 
                 }
             }
         }

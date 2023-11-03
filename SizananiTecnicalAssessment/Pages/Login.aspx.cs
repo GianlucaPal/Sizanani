@@ -21,6 +21,7 @@ namespace SizananiTecnicalAssessment
             if(!Page.IsPostBack)
             {
                 currentUserEntry = new UserEntry();
+                Session["IsLoggedIn"] = false;
             }
             
         }
@@ -41,7 +42,9 @@ namespace SizananiTecnicalAssessment
             {
                 if (currentUserEntry.ValidateUserLogin())
                 {
-                    Response.Redirect($"~/Default.aspx?Login={Helpers.Encrypt(currentUserEntry.UserID)}");
+                    Session["IsLoggedIn"] = true;
+                    Session["UserID"] = Helpers.Encrypt(currentUserEntry.UserID);
+                    Response.Redirect($"~/Default.aspx");
                 }
             }
             catch (Exceptions.ValidationException ex) 

@@ -27,11 +27,23 @@ namespace SizananiTecnicalAssessment
         {
             if (!Page.IsPostBack)
             {
-                if (Request.QueryString["Login"] != null)
+                if (Session["IsLoggedIn"] == null)
                 {
-                    currentVehicleEntry = new Vehicle();
-                    currentUserEntry = new UserEntry(Helpers.Decrypt(Request.QueryString["Login"].ToString()));
-                    currentVehicleEntry.UserID = currentUserEntry.UserID;
+                    Response.Redirect($"~/Pages/Login.aspx");
+                }
+                else if (bool.Parse(Session["IsLoggedIn"].ToString()) == true)
+                {
+                    if((Request.QueryString["Vehicle"] != null)) // Existing Vhicle
+                    {
+                        currentVehicleEntry = new Vehicle(int.Parse(Request.QueryString["Vehicle"]));
+                        PopulateControls();
+                    }
+                    else //New Vehicle
+                    {
+                        currentVehicleEntry = new Vehicle();
+                        currentUserEntry = new UserEntry(Helpers.Decrypt(Session["UserID"].ToString()));
+                        currentVehicleEntry.UserID = currentUserEntry.UserID;
+                    }
                 }
                 else
                 {
@@ -50,6 +62,13 @@ namespace SizananiTecnicalAssessment
             currentVehicleEntry.Model = txtModel.Text;
         }
 
+        public void PopulateControls()
+        {
+            txtRegistrationNumber.Text = currentVehicleEntry.RegistrationNumber ;
+            txtWeight.Text = currentVehicleEntry.Weight.ToString();
+            ddlType.SelectedValue = currentVehicleEntry.TypeID.ToString();
+            txtModel.Text = currentVehicleEntry.Model;
+        }
         #endregion Methods     
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -59,7 +78,7 @@ namespace SizananiTecnicalAssessment
                 PopulateObject();
                 if (currentVehicleEntry.Save())
                 {
-                    Response.Redirect($"~/Default.aspx?Login={Helpers.Encrypt(currentUserEntry.UserID)}");
+                    Response.Redirect($"~/Default.aspx?");
                 }
             }
             catch (Exceptions.ValidationException ex)

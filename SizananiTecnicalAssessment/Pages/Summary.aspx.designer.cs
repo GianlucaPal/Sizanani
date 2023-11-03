@@ -11,7 +11,7 @@ namespace SizananiTecnicalAssessment
 {
 
 
-    public partial class _Default
+    public partial class Summary
     {
 
         /// <summary>
@@ -31,15 +31,6 @@ namespace SizananiTecnicalAssessment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upVehicles;
-
-        /// <summary>
-        /// btnAddVehicle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddVehicle;
 
         /// <summary>
         /// gvVehicles control.

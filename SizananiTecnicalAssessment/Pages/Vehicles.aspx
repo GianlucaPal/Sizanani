@@ -36,7 +36,13 @@
                         <td style="text-align: right;padding-top:20px">Weight:
                         </td>
                         <td style="text-align: right;padding-top:20px">
-                            <asp:TextBox ID="txtWeight" runat="server" Width="194px" BorderStyle="Solid" BorderColor="Gray" BorderWidth="1px" TextMode="Number"></asp:TextBox>    
+                            <asp:TextBox ID="txtWeight" runat="server" Width="194px" BorderStyle="Solid" BorderColor="Gray" BorderWidth="1px"></asp:TextBox>   
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator_txtWeight"
+                                ControlToValidate="txtWeight" ValidationGroup="Insert" ForeColor="Red"
+                                runat="server" Display="Dynamic"
+                                ErrorMessage="'Weight' must be decimal"
+                                ValidationExpression="^\d+([,\.]\d{1,2})?$">
+                            </asp:RegularExpressionValidator>
                         </td>
                     </tr>
                 </table>
@@ -54,7 +60,7 @@
     <asp:UpdatePanel ID="upButtons" UpdateMode ="Conditional" runat="server">
         <ContentTemplate>
             <div style="text-align: center; width: 100%; display: inline-block; padding-top: 20px; padding-bottom: 20px;">
-                <asp:Button ID="btnSave" runat="server" CssClass="button"
+                <asp:Button ID="btnSave" runat="server" CssClass="button" ValidationGroup="Insert"
                     Text="Save" Visible="True" OnClick="btnSave_Click" />
             </div>
         </ContentTemplate>

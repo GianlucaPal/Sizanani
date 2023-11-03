@@ -264,6 +264,7 @@ namespace SizananiTecnicalAssessment.Models
         }
         #endregion Validate User Login
 
+
         #endregion Methods
 
     }
